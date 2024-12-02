@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2178073922435996828}
   - component: {fileID: 7643465358812375377}
   - component: {fileID: 6601274336244177813}
+  - component: {fileID: 1861353470}
   m_Layer: 0
   m_Name: Ball 1
   m_TagString: Ball
@@ -31,7 +32,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -4.7, y: 22.9, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -129,3 +130,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 1
   speed: 2
+  animator: {fileID: 1861353470}
+--- !u!95 &1861353470
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178073922435996824}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b267bea520b08842826caa6166f9a03, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Scripts.Ball;
 using Scripts.Managers;
 using UnityEngine;
 
@@ -34,9 +35,11 @@ namespace Scripts.Dog
             {
                 _isBarking = true;
                 
-                Destroy(other.gameObject);
+                BallController ballController = other.gameObject.GetComponent<BallController>();
                 
-                int points = other.gameObject.GetComponent<Ball.BallController>().Type switch
+                ballController.DestroyBall();
+                
+                int points = ballController.Type switch
                 {
                     Ball.BallType.Red => 1,
                     Ball.BallType.Blue => 2,

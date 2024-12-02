@@ -1816,7 +1816,7 @@ MonoBehaviour:
   - {fileID: 7945815000853930370, guid: fc41e6839a5494e0cbaea5f0081c271d, type: 3}
   difficultyIncreaseRate: 0.1
   spawnLimitXLeft: -22
-  spawnLimitXRight: 19
+  spawnLimitXRight: 17
 --- !u!1 &1025854373
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,17 +6,23 @@ namespace Scripts.Ball
     {
         [SerializeField] private BallType _ballType;
         [SerializeField] private float speed = 2f;
+        [SerializeField] private Animator animator; // Reference to the Animator component
+
+        private bool isBeingDestroyed = false; // To prevent multiple destruction triggers
 
         public BallType Type => _ballType;
 
         private void Update()
         {
-            MoveBall();
-
-            // Destroy the ball if it falls out of bounds
-            if (transform.position.y < -6f)
+            if (!isBeingDestroyed)
             {
-                Destroy(gameObject);
+                MoveBall();
+
+                // Destroy the ball if it falls out of bounds
+                if (transform.position.y < -6f)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
 
@@ -38,6 +44,19 @@ namespace Scripts.Ball
                     transform.Translate((Vector3.forward + direction * 0.5f) * speed * 10 * Time.deltaTime);
                     break;
             }
+        }
+
+        public void DestroyBall()
+        {
+            if (isBeingDestroyed) return;
+
+            isBeingDestroyed = true;
+
+            // Trigger destruction animation
+            animator.SetTrigger("destroy");
+
+            // Destroy the ball after the animation finishes
+            Destroy(gameObject, 0.25f); // Adjust delay based on the animation length
         }
     }
 
