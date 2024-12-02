@@ -4,29 +4,54 @@ using UnityEngine;
 
 public class SpawnManagerX : MonoBehaviour
 {
-    public GameObject[] ballPrefabs;
+    public GameObject[] ballPrefabs; // Assign all ball prefabs in the inspector
 
     private float spawnLimitXLeft = -22;
-    private float spawnLimitXRight = 7;
+    private float spawnLimitXRight = 22;
     private float spawnPosY = 30;
 
     private float startDelay = 1.0f;
-    private float spawnInterval = 4.0f;
+    private float minSpawnInterval = 3.0f;
+    private float maxSpawnInterval = 5.0f;
+    private float currentSpawnInterval;
+
+    [SerializeField] private float difficultyIncreaseRate = 0.1f; // How much to reduce interval per second
+    private float minDifficultyInterval = 1.0f;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        InvokeRepeating("SpawnRandomBall", startDelay, spawnInterval);
+        currentSpawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
+        StartCoroutine(SpawnBallsWithDynamicInterval());
     }
 
-    // Spawn random ball at random x position at top of play area
-    void SpawnRandomBall ()
+    // Coroutine to spawn balls at dynamic intervals
+    private IEnumerator SpawnBallsWithDynamicInterval()
+    {
+        yield return new WaitForSeconds(startDelay);
+
+        while (true)
+        {
+            SpawnRandomBall();
+
+            // Adjust the spawn interval to increase difficulty over time
+            currentSpawnInterval = Mathf.Max(
+                Random.Range(minSpawnInterval, maxSpawnInterval) - (Time.timeSinceLevelLoad * difficultyIncreaseRate),
+                minDifficultyInterval
+            );
+
+            yield return new WaitForSeconds(currentSpawnInterval);
+        }
+    }
+
+    // Spawn random ball at a random x position at the top of the play area
+    private void SpawnRandomBall()
     {
         // Generate random ball index and random spawn position
+        int randomBallIndex = Random.Range(0, ballPrefabs.Length); // Randomize ball type
         Vector3 spawnPos = new Vector3(Random.Range(spawnLimitXLeft, spawnLimitXRight), spawnPosY, 0);
 
-        // instantiate ball at random spawn location
-        Instantiate(ballPrefabs[0], spawnPos, ballPrefabs[0].transform.rotation);
+        // Instantiate ball at random spawn location
+        Instantiate(ballPrefabs[randomBallIndex], spawnPos, ballPrefabs[randomBallIndex].transform.rotation);
     }
-
 }
