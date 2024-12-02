@@ -20,6 +20,7 @@ public class PlayerControllerX : MonoBehaviour
 
     private void SpawnDog()
     {
+        GameManager.Instance.PlayDogSpawnSound();
         Instantiate(dogPrefab, transform.position, dogPrefab.transform.rotation);
         _lastSpawnTime = Time.time;
     }

@@ -39,6 +39,8 @@ namespace Scripts.Dog
                 
                 ballController.DestroyBall();
                 
+                GameManager.Instance.PlayBallCollectSound();
+                
                 int points = ballController.Type switch
                 {
                     Ball.BallType.Red => 1,
@@ -70,6 +72,11 @@ namespace Scripts.Dog
             yield return new WaitForSeconds(animationTime);
             
             _isBarking = false;
+        }
+        
+        public void BarkSound()
+        {
+            GameManager.Instance.PlayDogCollectSound();
         }
     }
 }

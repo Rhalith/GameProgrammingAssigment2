@@ -14,6 +14,13 @@ namespace Scripts.Managers
         [SerializeField] private TextMeshProUGUI finalScoreText;
         [SerializeField] private Button playAgainButton;
         [SerializeField] private float timer = 60f;
+        
+        [Header("Sounds")]
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip dogSpawnSound;
+        [SerializeField] private AudioClip dogCollectSound;
+        [SerializeField] private AudioClip ballDestroySound;
+        [SerializeField] private AudioClip ballCollectSound;
         public static GameManager Instance { get; private set; }
 
         public ScoreManager ScoreManager => scoreManager;
@@ -77,6 +84,26 @@ namespace Scripts.Managers
         private void RestartGame()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        
+        public void PlayDogSpawnSound()
+        {
+            audioSource.PlayOneShot(dogSpawnSound);
+        }
+        
+        public void PlayDogCollectSound()
+        {
+            audioSource.PlayOneShot(dogCollectSound);
+        }
+        
+        public void PlayBallDestroySound()
+        {
+            audioSource.PlayOneShot(ballDestroySound);
+        }
+        
+        public void PlayBallCollectSound()
+        {
+            audioSource.PlayOneShot(ballCollectSound);
         }
     }
 }

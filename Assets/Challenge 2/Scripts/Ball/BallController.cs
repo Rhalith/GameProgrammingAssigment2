@@ -1,3 +1,4 @@
+using Scripts.Managers;
 using UnityEngine;
 
 namespace Scripts.Ball
@@ -17,10 +18,10 @@ namespace Scripts.Ball
             if (!isBeingDestroyed)
             {
                 MoveBall();
-
-                // Destroy the ball if it falls out of bounds
-                if (transform.position.y < -6f)
+                
+                if (transform.position.y < -1f)
                 {
+                    GameManager.Instance.PlayBallDestroySound();
                     Destroy(gameObject);
                 }
             }
