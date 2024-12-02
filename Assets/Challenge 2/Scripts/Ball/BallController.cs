@@ -50,7 +50,7 @@ namespace Scripts.Ball
         public void DestroyBall()
         {
             if (isBeingDestroyed) return;
-
+            GetComponent<Collider>().enabled = false;
             isBeingDestroyed = true;
 
             // Trigger destruction animation
