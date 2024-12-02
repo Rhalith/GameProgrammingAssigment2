@@ -1,18 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Scripts.Managers;
 using UnityEngine;
 
 public class PlayerControllerX : MonoBehaviour
 {
-    public GameObject dogPrefab;
-
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private GameObject dogPrefab;
+    [SerializeField] private float spawnCooldown = 1.0f;
+    
+    private float _lastSpawnTime = 0.0f;
+    private void Update()
     {
-        // On spacebar press, send dog
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(GameManager.Instance.IsGameOver) return;
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= _lastSpawnTime + spawnCooldown)
         {
-            Instantiate(dogPrefab, transform.position, dogPrefab.transform.rotation);
+            SpawnDog();
         }
+    }
+
+    private void SpawnDog()
+    {
+        Instantiate(dogPrefab, transform.position, dogPrefab.transform.rotation);
+        _lastSpawnTime = Time.time;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Scripts.Managers;
 using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
@@ -29,8 +30,8 @@ public class BallSpawner : MonoBehaviour
     private IEnumerator SpawnBallsWithDynamicInterval()
     {
         yield return new WaitForSeconds(_startDelay);
-
-        while (true)
+        
+        while (!GameManager.Instance.IsGameOver)
         {
             SpawnRandomBall();
             
@@ -48,9 +49,6 @@ public class BallSpawner : MonoBehaviour
         int randomBallIndex = Random.Range(0, ballPrefabs.Length);
         Vector3 spawnPos = new Vector3(Random.Range(spawnLimitXLeft, spawnLimitXRight), _spawnPosY, 0);
 
-        GameObject ball = Instantiate(ballPrefabs[randomBallIndex], spawnPos, ballPrefabs[randomBallIndex].transform.rotation);
-        
-        // Destroy the ball after 10 seconds if it doesn't get collected
-        Destroy(ball, 10);
+        Instantiate(ballPrefabs[randomBallIndex], spawnPos, ballPrefabs[randomBallIndex].transform.rotation);
     }
 }

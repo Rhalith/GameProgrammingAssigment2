@@ -8,6 +8,8 @@ namespace Scripts.Managers
         [SerializeField] private TextMeshProUGUI scoreText; // Reference to the TMP text component
         private int _score;
 
+        public int Score => _score;
+
         public void AddScore(int i)
         {
             _score += i * 10;
