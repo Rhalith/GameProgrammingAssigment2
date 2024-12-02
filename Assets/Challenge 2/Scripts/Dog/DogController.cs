@@ -26,7 +26,7 @@ namespace Scripts.Dog
 
         private void MoveForward()
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
         }
 
         private void OnTriggerEnter(Collider other)
