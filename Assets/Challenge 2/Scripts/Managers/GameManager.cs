@@ -8,6 +8,7 @@ namespace Scripts.Managers
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] private BallSpawner ballSpawner;
         [SerializeField] private ScoreManager scoreManager;
         [SerializeField] private TextMeshProUGUI timerText;
         [SerializeField] private GameObject gameOverScreen;
@@ -104,6 +105,11 @@ namespace Scripts.Managers
         public void PlayBallCollectSound()
         {
             audioSource.PlayOneShot(ballCollectSound);
+        }
+
+        public void SlowDownBallSpawn()
+        { 
+            ballSpawner.SlowDownBallSpawn();
         }
     }
 }

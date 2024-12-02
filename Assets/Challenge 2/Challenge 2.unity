@@ -777,6 +777,7 @@ MonoBehaviour:
   moveSpeed: 10
   xLimit: 19
   animator: {fileID: 1025854374}
+  rotationSpeed: 10
 --- !u!4 &355618745
 Transform:
   m_ObjectHideFlags: 0
@@ -1817,6 +1818,8 @@ MonoBehaviour:
   - {fileID: 2178073922435996824, guid: 1d143480adadf43389395930eee2b5cf, type: 3}
   - {fileID: 4524317531697499709, guid: a325bcb65fd94414191d0ddc2514e2dc, type: 3}
   - {fileID: 7945815000853930370, guid: fc41e6839a5494e0cbaea5f0081c271d, type: 3}
+  powerUpPrefab: {fileID: 7945815000853930370, guid: e0b26acde93f30f43b1636d5f83ef2dc, type: 3}
+  powerUpSpawnProbability: 0.1
   difficultyIncreaseRate: 0.1
   spawnLimitXLeft: -22
   spawnLimitXRight: 17
@@ -2259,6 +2262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d705b65330084e759b0b4933f3eff6a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballSpawner: {fileID: 1007274692}
   scoreManager: {fileID: 948408782}
   timerText: {fileID: 1346112886}
   gameOverScreen: {fileID: 1338331884}

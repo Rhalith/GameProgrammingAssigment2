@@ -43,9 +43,9 @@ namespace Scripts.Dog
                 
                 int points = ballController.Type switch
                 {
-                    Ball.BallType.Red => 1,
-                    Ball.BallType.Blue => 2,
-                    Ball.BallType.Green => 3,
+                    BallType.Red => 1,
+                    BallType.Blue => 2,
+                    BallType.Green => 3,
                     _ => 0
                 };
                 

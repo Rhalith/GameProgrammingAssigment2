@@ -12,7 +12,6 @@ namespace Scripts.Ball
         private bool isBeingDestroyed = false; // To prevent multiple destruction triggers
 
         public BallType Type => _ballType;
-
         private void Update()
         {
             if (!isBeingDestroyed)
@@ -31,6 +30,10 @@ namespace Scripts.Ball
         {
             switch (_ballType)
             {
+                case BallType.PowerUp:
+                    // Default falling behavior
+                    transform.Translate(Vector3.down * speed * 8 * Time.deltaTime);
+                    break;
                 case BallType.Red:
                     // Default falling behavior
                     transform.Translate(Vector3.forward * speed * 10 * Time.deltaTime);
@@ -65,6 +68,7 @@ namespace Scripts.Ball
     {
         Red,
         Blue,
-        Green
+        Green,
+        PowerUp
     }
 }
