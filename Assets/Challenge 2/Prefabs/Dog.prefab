@@ -5326,7 +5326,6 @@ GameObject:
   - component: {fileID: 8241448880392688289}
   - component: {fileID: 8241448880400496855}
   - component: {fileID: 8241448879431697764}
-  - component: {fileID: 8241448879431697766}
   - component: {fileID: 4795966357350176964}
   m_Layer: 0
   m_Name: Dog
@@ -5421,19 +5420,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33, y: 0.18577094, z: 0.25494567}
   m_Center: {x: 7.1064847e-17, y: 0.09211464, z: 0.031998806}
---- !u!114 &8241448879431697766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8241448880393145375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aba24ec01e08d4e8596c800afced39e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 30
 --- !u!114 &4795966357350176964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5446,6 +5432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb8b184e805432c8f14889f05b9c8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 8241448880400496855}
+  speed: 30
 --- !u!1 &8241448880393145945
 GameObject:
   m_ObjectHideFlags: 0
