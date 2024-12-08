@@ -18,7 +18,7 @@ namespace Scripts.Dog
             {
                 MoveForward();
             }
-            if(transform.position.x < -30)
+            if(transform.position.x < -30 || transform.position.x > 35)
             {
                 Destroy(gameObject);
             }
